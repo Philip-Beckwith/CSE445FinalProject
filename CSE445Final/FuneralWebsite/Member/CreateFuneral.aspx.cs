@@ -37,6 +37,7 @@ namespace FuneralWebsite.Member
             {
                 savedFuneralJson = save.getEulogy((String)Session["UserName"], (String)Session["NameOfTheDead"]);
             }
+            eulogy.Text = savedFuneralJson;
 
             if (Page.IsPostBack) { }
             else if (!savedFuneralJson.Equals("") && !savedFuneralJson.Contains("ERROR:"))
@@ -105,7 +106,7 @@ namespace FuneralWebsite.Member
 
             String JsonFuneral = new JavaScriptSerializer().Serialize(funeral);
 
-            save.makeOrEditEulogy("Account1", NameOfTheDead.Text, JsonFuneral);
+            save.makeOrEditEulogy((String)Session["UserName"], NameOfTheDead.Text, JsonFuneral);
 
             Session["NameOfTheDead"] = NameOfTheDead.Text;
 
@@ -175,6 +176,7 @@ namespace FuneralWebsite.Member
             funeral.numberOfFlowers = NumberOfFlowers.Text;
 
             Session["CurrentFuneral"] = funeral;
+            Session["NameOfTheDead"] = funeral.nameOfDeceased;
         }
 
         protected void Button1_Click1(object sender, EventArgs e)
@@ -184,10 +186,10 @@ namespace FuneralWebsite.Member
 
         protected void LinkUserToFuneral()
         {
+            if (Session["NameOfTheDead"] == null || Session["UserName"] == null) { return; }
             string fLocation = Path.Combine(Request.PhysicalApplicationPath, @"App_Data\Member.xml");
             if (File.Exists(fLocation))
             {
-                eulogy.Text = "jlkasfjioajse";
                 FileStream FS = new FileStream(fLocation, FileMode.Open);
                 XmlDocument xd = new XmlDocument();
                 xd.Load(FS);
@@ -201,15 +203,16 @@ namespace FuneralWebsite.Member
                         //Add new funeral to user already here.
                         foreach(XmlNode funerals in node.ChildNodes)
                         {
-                            if (funerals["NameOfTheDead"].InnerText.Equals(Session["NameOfTheDead"])) 
+                            if (funerals.InnerText.Equals(Session["NameOfTheDead"])) 
                             {
                                 return;
                             }
-                            //Adding Funeral To Member.
-                            XmlElement nFuneral = xd.CreateElement("NameOfTheDead");
-                            nFuneral.InnerText = (String)Session["NameOfTheDead"];
-                            node.AppendChild(nFuneral);
+                            
                         }
+                        //Adding Funeral To Member.
+                        XmlElement nFuneral = xd.CreateElement("NameOfTheDead");
+                        nFuneral.InnerText = (String)Session["NameOfTheDead"];
+                        node.AppendChild(nFuneral);
                     }
                 }
 

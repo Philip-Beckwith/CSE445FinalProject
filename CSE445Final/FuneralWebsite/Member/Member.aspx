@@ -18,13 +18,13 @@
             <br />
             <br />
             <br />
-            <asp:DropDownList ID="DropDownList1" runat="server" Height="40px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+            <asp:DropDownList ID="DropDownList1" runat="server" Height="40px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
             </asp:DropDownList>
             <br />
+            <asp:Button ID="edit" runat="server" OnClick="edit_Click" Text="View / Edit" />
             <br />
             <br />
             Welcome to the Jungle, err the Member page. <br />
-            Philip will put things here. Eventually. <br />
             Clicking the signout button will cause you to expire the login cookie. <br />
         </div>
     </form>

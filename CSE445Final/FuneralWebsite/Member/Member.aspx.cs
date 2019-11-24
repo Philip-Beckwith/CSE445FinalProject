@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml;
 
 namespace FuneralWebsite.Member
 {
@@ -28,6 +30,7 @@ namespace FuneralWebsite.Member
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            Session["NameOfTheDead"] = "";
             Response.Redirect("CreateFuneral.aspx");
         }
 
@@ -43,10 +46,9 @@ namespace FuneralWebsite.Member
 
         private void loadFunerals()
         {
-            string fLocation = Path.Combine(Request.PhysicalApplicationPath, @"App_Data\Member.xml");
+            string fLocation = System.IO.Path.Combine(Request.PhysicalApplicationPath, @"App_Data\Member.xml");
             if (File.Exists(fLocation))
             {
-                eulogy.Text = "jlkasfjioajse";
                 FileStream FS = new FileStream(fLocation, FileMode.Open);
                 XmlDocument xd = new XmlDocument();
                 xd.Load(FS);
@@ -57,23 +59,25 @@ namespace FuneralWebsite.Member
                 {
                     if (node["username"].InnerText == (String)Session["UserName"])
                     {
-                        //Add new funeral to user already here.
+                        //Add funeral to user dropdown.
                         foreach (XmlNode funerals in node.ChildNodes)
                         {
-                            if (funerals["NameOfTheDead"].InnerText.Equals(Session["NameOfTheDead"]))
+                            if(!funerals.Name.Equals("username") && !funerals.Name.Equals("password"))
                             {
-                                return;
+                                ListItem item = new ListItem(funerals.InnerText);
+                                item.Value = funerals.InnerText;
+                                DropDownList1.Items.Insert(0, item);
                             }
-                            //Adding Funeral To Member.
-                            XmlElement nFuneral = xd.CreateElement("NameOfTheDead");
-                            nFuneral.InnerText = (String)Session["NameOfTheDead"];
-                            node.AppendChild(nFuneral);
                         }
                     }
                 }
-
-                xd.Save(fLocation);
             }
+        }
+
+        protected void edit_Click(object sender, EventArgs e)
+        {
+            Session["NameOfTheDead"] = DropDownList1.SelectedValue;
+            Response.Redirect("CreateFuneral.aspx");
         }
     }
 }
