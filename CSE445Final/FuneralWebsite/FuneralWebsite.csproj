@@ -40,6 +40,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -58,10 +60,39 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\SaveFuneral\EulogyService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SaveFuneral\EulogyService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SaveFuneral\Service1.wsdl" />
+    <None Include="Connected Services\CalendarService\CalendarServices.disco" />
+    <None Include="Connected Services\CalendarService\configuration91.svcinfo" />
+    <None Include="Connected Services\CalendarService\configuration.svcinfo" />
+    <None Include="Connected Services\CalendarService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\SaveFuneral\EulogyService.disco" />
+    <None Include="Connected Services\SaveFuneral\configuration91.svcinfo" />
+    <None Include="Connected Services\SaveFuneral\configuration.svcinfo" />
+    <None Include="Connected Services\SaveFuneral\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Member\CreateFuneral.aspx" />
     <Content Include="Member\Member.aspx" />
     <Content Include="Member\MemberLogin.aspx" />
     <Content Include="Member\MemberRegister.aspx" />
     <Content Include="Staff\Web.config" />
+    <None Include="Connected Services\CalendarService\CalendarServices.wsdl" />
+    <None Include="Connected Services\CalendarService\CalendarServices.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CalendarService\CalendarServices1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Staff\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -82,6 +113,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\SaveFuneral\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\CalendarService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -95,6 +136,12 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Member\CreateFuneral.aspx.cs">
+      <DependentUpon>CreateFuneral.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Member\CreateFuneral.aspx.designer.cs">
+      <DependentUpon>CreateFuneral.aspx</DependentUpon>
     </Compile>
     <Compile Include="Member\Member.aspx.cs">
       <DependentUpon>Member.aspx</DependentUpon>
@@ -128,6 +175,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\SaveFuneral\" />
+    <WCFMetadataStorage Include="Connected Services\CalendarService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

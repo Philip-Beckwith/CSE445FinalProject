@@ -22,5 +22,10 @@ namespace FuneralWebsite.Member
                 Response.Redirect("MemberLogin.aspx");
             }
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

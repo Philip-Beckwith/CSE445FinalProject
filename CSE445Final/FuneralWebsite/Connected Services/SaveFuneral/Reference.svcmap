@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bbcc957b-8b1a-42bf-8322-f7a95cf0a45c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://webstrar36.fulton.asu.edu/page3/EulogyService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EulogyService.disco" MetadataType="Disco" ID="cfe0d373-3ae8-45aa-b4d7-020bfd9755cb" SourceId="1" SourceUrl="http://webstrar36.fulton.asu.edu/Page3/EulogyService.svc?disco" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="11604c42-4fda-42b3-8ef3-066f946728ab" SourceId="1" SourceUrl="http://webstrar36.fulton.asu.edu/Page3/EulogyService.svc?wsdl" />
+    <MetadataFile FileName="EulogyService.xsd" MetadataType="Schema" ID="f7b04269-e643-4f92-9e96-73d26c661452" SourceId="1" SourceUrl="http://webstrar36.fulton.asu.edu/Page3/EulogyService.svc?xsd=xsd0" />
+    <MetadataFile FileName="EulogyService1.xsd" MetadataType="Schema" ID="1cc21b5e-2058-4467-ab71-0b1ce5266613" SourceId="1" SourceUrl="http://webstrar36.fulton.asu.edu/Page3/EulogyService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -6,13 +6,25 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body style="height: 490px">
     <form id="form1" runat="server">
         <div>
+            <asp:Button ID="btnSignout" runat="server" Text="Sign Out" OnClick="logoutFunc" />
+            <br />
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="New Funeral" />
+            <br />
+            <br />
+            <br />
+            <asp:DropDownList ID="DropDownList1" runat="server" Height="40px">
+            </asp:DropDownList>
+            <br />
+            <br />
+            <br />
             Welcome to the Jungle, err the Member page. <br />
             Philip will put things here. Eventually. <br />
             Clicking the signout button will cause you to expire the login cookie. <br />
-            <asp:Button ID="btnSignout" runat="server" Text="Sign Out" OnClick="logoutFunc" />
         </div>
     </form>
 </body>
