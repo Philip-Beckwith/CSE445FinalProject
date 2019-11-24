@@ -8,6 +8,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <h1>Member registration page</h1>
         <div>
             Member Registration Page <br />
             Enter information below to create an account <br />

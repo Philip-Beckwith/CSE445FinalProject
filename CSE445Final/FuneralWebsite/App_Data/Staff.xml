@@ -4,4 +4,8 @@
     <username>TA</username>
     <password>Cse445ta!</password>
   </staff>
+  <staff>
+    <username>admin</username>
+    <password>admin</password>
+  </staff>
 </users>

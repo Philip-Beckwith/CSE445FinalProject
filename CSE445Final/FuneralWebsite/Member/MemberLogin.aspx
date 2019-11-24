@@ -8,6 +8,7 @@
 </head>
 <body>
     <form id="form2" runat="server">
+        <h1>Member login page</h1>
         <div>
             Username: <asp:TextBox ID="txbxUsername" runat="server"></asp:TextBox> <br />
             Password: <asp:TextBox ID="txbxPassword" runat="server"></asp:TextBox> <br />

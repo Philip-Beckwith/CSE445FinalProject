@@ -8,6 +8,7 @@
 </head>
 <body style="height: 490px">
     <form id="form1" runat="server">
+        <h1>Member page</h1>
         <div>
             <asp:Button ID="btnSignout" runat="server" Text="Sign Out" OnClick="logoutFunc" />
             <br />
