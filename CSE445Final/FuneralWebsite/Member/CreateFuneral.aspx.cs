@@ -17,10 +17,10 @@ namespace FuneralWebsite.Member
     }
     public partial class CreateFuneral : System.Web.UI.Page
     {
-        ServiceReference1.CalendarServicesClient calendarService;
+        CalendarService.CalendarServicesClient calendarService;
         protected void Page_Load(object sender, EventArgs e)
         {
-            calendarService = new ServiceReference1.CalendarServicesClient();
+            calendarService = new CalendarService.CalendarServicesClient();
         }
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
