@@ -13,7 +13,7 @@ namespace FuneralWebsite.Member
         public string nameOfDeceased = "";
         public string date = "";
         public string eulogy = "";
-        public float price = 1000; //default
+        public string price = "$1000"; //default
     }
     public partial class CreateFuneral : System.Web.UI.Page
     {
@@ -64,12 +64,35 @@ namespace FuneralWebsite.Member
         public Funeral compileFuneralObject()
         {
             Funeral funeral = new Funeral();
+            calculatePrice();
 
             funeral.nameOfDeceased = NameOfTheDead.Text;
             funeral.date = reservedDay.Text;
             funeral.eulogy = eulogy.Text;
+            funeral.price = Cost.Text;
 
             return funeral;
+        }
+
+        public void calculatePrice()
+        {
+            AWeirdPricingService.Service1Client priceService = new AWeirdPricingService.Service1Client();
+            int funeralType = 0;
+            int casketType = 0;
+            int numberOfFlowers = 0;
+
+            try
+            {
+                funeralType = Int32.Parse(FuneralType.SelectedValue);
+                casketType = Int32.Parse(CasketType.SelectedValue);
+                numberOfFlowers = Int32.Parse(NumberOfFlowers.Text);
+
+                Cost.Text = priceService.getRate(funeralType, casketType, numberOfFlowers, false).ToString();
+            }
+            catch 
+            {
+                Cost.Text = "$N/A";
+            }
         }
 
 

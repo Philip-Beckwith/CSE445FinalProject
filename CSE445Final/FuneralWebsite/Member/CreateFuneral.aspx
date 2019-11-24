@@ -19,7 +19,7 @@
 </head>
 <body style="height: 1194px">
     <form id="form1" runat="server">
-        <div id="eulogy" style="height: 1143px">
+        <div id="eulogy" style="height: 1319px">
             <asp:Label ID="Label1" runat="server" Font-Size="XX-Large" Text="name of deceased"></asp:Label>
             <asp:TextBox ID="NameOfTheDead" runat="server" Font-Size="XX-Large" Height="47px" Width="586px"></asp:TextBox>
             <br />
@@ -40,6 +40,32 @@
             <asp:Calendar ID="daySelector" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
             <br />
             <asp:Button ID="reserveDate" runat="server" OnClick="Button1_Click" Text="Reserve Date" />
+            <br />
+            <br />
+            <br />
+            What kind of Funeral would you like?<br />
+            <asp:RadioButtonList ID="FuneralType" runat="server">
+                <asp:ListItem Value="0">Bad</asp:ListItem>
+                <asp:ListItem Value="1">Acceptable</asp:ListItem>
+                <asp:ListItem Value="3">Exquisite</asp:ListItem>
+            </asp:RadioButtonList>
+            <br />
+            What kind of Casket is required?<br />
+            <asp:RadioButtonList ID="CasketType" runat="server">
+                <asp:ListItem Selected="True" Value="0">Cardboard</asp:ListItem>
+                <asp:ListItem Value="2">Wood</asp:ListItem>
+                <asp:ListItem Value="3">Illuminated</asp:ListItem>
+            </asp:RadioButtonList>
+            <br />
+            <br />
+            <br />
+            How loved is the departed?<br />
+            Number Of Flowers:
+            <asp:TextBox ID="NumberOfFlowers" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Cost:
+            <asp:Label ID="Cost" runat="server" Text="$ N/A"></asp:Label>
             <br />
             <br />
             <br />

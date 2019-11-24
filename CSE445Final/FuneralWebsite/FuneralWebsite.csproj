@@ -60,6 +60,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\AWeirdPricingService\Service1.wsdl" />
+    <None Include="Connected Services\AWeirdPricingService\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AWeirdPricingService\Service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\SaveFuneral\EulogyService.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -78,6 +85,13 @@
     <None Include="Connected Services\SaveFuneral\configuration91.svcinfo" />
     <None Include="Connected Services\SaveFuneral\configuration.svcinfo" />
     <None Include="Connected Services\SaveFuneral\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\AWeirdPricingService\Service1.disco" />
+    <None Include="Connected Services\AWeirdPricingService\configuration91.svcinfo" />
+    <None Include="Connected Services\AWeirdPricingService\configuration.svcinfo" />
+    <None Include="Connected Services\AWeirdPricingService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -113,6 +127,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\AWeirdPricingService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\SaveFuneral\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -180,6 +199,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\AWeirdPricingService\" />
     <WCFMetadataStorage Include="Connected Services\SaveFuneral\" />
     <WCFMetadataStorage Include="Connected Services\CalendarService\" />
   </ItemGroup>
