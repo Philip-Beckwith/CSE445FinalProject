@@ -41,9 +41,12 @@ namespace FuneralWebsite.Member
                         //Create a Login cookie for the member
                         HttpCookie myCookies = new HttpCookie("LoginCookie");
                         myCookies["valid"] = "true";
-                        // myCookies["username"] = username;
+                        myCookies["username"] = username;
                         // myCookies["password"] = password;
                         Response.Cookies.Add(myCookies);
+
+                        //Saving Name in Session State
+                        Session["UserName"] = username;
 
                         //if logged in successfully then go to Member.aspx
                         Response.Redirect("Member.aspx");

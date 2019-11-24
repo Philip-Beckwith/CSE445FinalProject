@@ -42,6 +42,15 @@ namespace FuneralWebsite.Member
         protected global::System.Web.UI.WebControls.TextBox NameOfTheDead;
 
         /// <summary>
+        /// updateName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button updateName;
+
+        /// <summary>
         /// reservedDay control.
         /// </summary>
         /// <remarks>
@@ -132,6 +141,15 @@ namespace FuneralWebsite.Member
         protected global::System.Web.UI.WebControls.Label Cost;
 
         /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
         /// saveChanges control.
         /// </summary>
         /// <remarks>
@@ -139,5 +157,14 @@ namespace FuneralWebsite.Member
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button saveChanges;
+
+        /// <summary>
+        /// homeButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button homeButton;
     }
 }

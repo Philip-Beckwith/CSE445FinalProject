@@ -5,27 +5,70 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Script.Serialization;
+using System.IO;
+using System.Xml;
 
 namespace FuneralWebsite.Member
 {
     public class Funeral
     {
-        public string nameOfDeceased = "";
-        public string date = "";
+        public string nameOfDeceased = "lkjiojlk";
+        public string date = "Date";
         public string eulogy = "";
-        public string price = "$1000"; //default
+        public string price = "$10000"; //default
+        public int type = 0;
+        public int casketType = 0;
+        public string numberOfFlowers = "0";
     }
     public partial class CreateFuneral : System.Web.UI.Page
     {
         CalendarService.CalendarServicesClient calendarService;
+        Funeral funeral;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             calendarService = new CalendarService.CalendarServicesClient();
+
+            SaveFuneral.EulogyServicesClient save = new SaveFuneral.EulogyServicesClient();
+
+            String savedFuneralJson = "";
+
+            if(Session["UserName"] != null && Session["NameOfTheDead"] != null)
+            {
+                savedFuneralJson = save.getEulogy((String)Session["UserName"], (String)Session["NameOfTheDead"]);
+            }
+
+            if (Page.IsPostBack) { }
+            else if (!savedFuneralJson.Equals("") && !savedFuneralJson.Contains("ERROR:"))
+            {
+                funeral = new JavaScriptSerializer().Deserialize<Funeral>(savedFuneralJson);
+                loadInfo();
+            }
+            else if (Session["CurrentFuneral"] != null)
+            {
+                funeral = (Funeral) Session["CurrentFuneral"];
+                loadInfo();
+            }
+
+            if(funeral == null)
+            {
+                funeral = new Funeral();
+            }
+        }
+
+        private void loadInfo()
+        {
+            NameOfTheDead.Text = funeral.nameOfDeceased;
+            reservedDay.Text = funeral.date;
+            eulogy.Text = funeral.eulogy;
+            Cost.Text = funeral.price;
+            FuneralType.SelectedIndex = funeral.type;
+            CasketType.SelectedIndex = funeral.casketType;
+            NumberOfFlowers.Text = funeral.numberOfFlowers;
         }
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
@@ -42,6 +85,7 @@ namespace FuneralWebsite.Member
             {
                 availablity.Text = "Not Available";
             }
+            updateSession();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -50,20 +94,26 @@ namespace FuneralWebsite.Member
             {
                 reservedDay.Text = dateLabel.Text;
             }
+            updateSession();
         }
 
         protected void saveChanges_Click(object sender, EventArgs e)
         {
             SaveFuneral.EulogyServicesClient save = new SaveFuneral.EulogyServicesClient();
 
-            String JsonFuneral = new JavaScriptSerializer().Serialize(compileFuneralObject());
+            updateSession();
+
+            String JsonFuneral = new JavaScriptSerializer().Serialize(funeral);
 
             save.makeOrEditEulogy("Account1", NameOfTheDead.Text, JsonFuneral);
+
+            Session["NameOfTheDead"] = NameOfTheDead.Text;
+
+            LinkUserToFuneral();
         }
 
         public Funeral compileFuneralObject()
         {
-            Funeral funeral = new Funeral();
             calculatePrice();
 
             funeral.nameOfDeceased = NameOfTheDead.Text;
@@ -95,6 +145,77 @@ namespace FuneralWebsite.Member
             }
         }
 
+        protected void homeButton_Click(object sender, EventArgs e)
+        {
+            updateSession();
+
+            Response.Redirect("Member.aspx");
+        }
+
+        protected void NameOfTheDead_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void updateName_Click(object sender, EventArgs e)
+        {
+            updateSession();
+        }
+
+        private void updateSession()
+        {
+            calculatePrice();
+
+            funeral.nameOfDeceased = NameOfTheDead.Text;
+            funeral.date = reservedDay.Text;
+            funeral.eulogy = eulogy.Text;
+            funeral.price = Cost.Text;
+            funeral.type = FuneralType.SelectedIndex;
+            funeral.casketType = CasketType.SelectedIndex;
+            funeral.numberOfFlowers = NumberOfFlowers.Text;
+
+            Session["CurrentFuneral"] = funeral;
+        }
+
+        protected void Button1_Click1(object sender, EventArgs e)
+        {
+            updateSession();
+        }
+
+        protected void LinkUserToFuneral()
+        {
+            string fLocation = Path.Combine(Request.PhysicalApplicationPath, @"App_Data\Member.xml");
+            if (File.Exists(fLocation))
+            {
+                eulogy.Text = "jlkasfjioajse";
+                FileStream FS = new FileStream(fLocation, FileMode.Open);
+                XmlDocument xd = new XmlDocument();
+                xd.Load(FS);
+                FS.Close();
+
+                XmlElement rootElement = xd.DocumentElement;
+                foreach (XmlNode node in rootElement.ChildNodes)
+                {
+                    if (node["username"].InnerText == (String)Session["UserName"])
+                    {
+                        //Add new funeral to user already here.
+                        foreach(XmlNode funerals in node.ChildNodes)
+                        {
+                            if (funerals["NameOfTheDead"].InnerText.Equals(Session["NameOfTheDead"])) 
+                            {
+                                return;
+                            }
+                            //Adding Funeral To Member.
+                            XmlElement nFuneral = xd.CreateElement("NameOfTheDead");
+                            nFuneral.InnerText = (String)Session["NameOfTheDead"];
+                            node.AppendChild(nFuneral);
+                        }
+                    }
+                }
+
+                xd.Save(fLocation);
+            }
+        }
 
     }
 }

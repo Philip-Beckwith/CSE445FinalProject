@@ -18,7 +18,7 @@
             <br />
             <br />
             <br />
-            <asp:DropDownList ID="DropDownList1" runat="server" Height="40px">
+            <asp:DropDownList ID="DropDownList1" runat="server" Height="40px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
             </asp:DropDownList>
             <br />
             <br />
