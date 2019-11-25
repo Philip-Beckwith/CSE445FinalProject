@@ -105,7 +105,7 @@ namespace FuneralWebsite.Member
 
             String JsonFuneral = new JavaScriptSerializer().Serialize(funeral);
 
-            eulogy.Text = save.makeOrEditEulogy((String)Session["UserName"], NameOfTheDead.Text, JsonFuneral);
+            save.makeOrEditEulogy((String)Session["UserName"], NameOfTheDead.Text, JsonFuneral);
 
             Session["NameOfTheDead"] = NameOfTheDead.Text;
 
