@@ -40,7 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HashLibrary">
-      <HintPath>..\..\..\..\Dist\HashLibrary\HashLibrary\bin\Debug\HashLibrary.dll</HintPath>
+      <HintPath>DLL\HashLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Runtime.Serialization" />
