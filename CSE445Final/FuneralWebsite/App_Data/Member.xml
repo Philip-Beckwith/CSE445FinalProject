@@ -1,75 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <users>
   <member>
-    <username>abc</username>
-    <password>123</password>
+    <username>john</username>
+    <password>am9obg==</password>
+    <NameOfTheDead>Bob Deadman</NameOfTheDead>
   </member>
   <member>
-    <username>nsautter</username>
-    <password>NotGonnaTellYou</password>
-  </member>
-  <member>
-    <username>1</username>
-    <password>1</password>
-    <NameOfTheDead>Jone Doe daferasdf</NameOfTheDead>
-    <NameOfTheDead>guy hound</NameOfTheDead>
-    <NameOfTheDead>
-    </NameOfTheDead>
-    <NameOfTheDead>ooopppsss</NameOfTheDead>
-    <NameOfTheDead>aaaa</NameOfTheDead>
-    <NameOfTheDead>test1</NameOfTheDead>
-    <NameOfTheDead>Jone Doe</NameOfTheDead>
-    <NameOfTheDead>bobby</NameOfTheDead>
-    <NameOfTheDead>jack</NameOfTheDead>
-  </member>
-  <member>
-    <username>
-    </username>
-    <password>
-    </password>
-    <NameOfTheDead>Jone Doe</NameOfTheDead>
-    <NameOfTheDead>Pizza joe</NameOfTheDead>
-    <NameOfTheDead>not jon</NameOfTheDead>
-    <NameOfTheDead>pizza joe</NameOfTheDead>
-    <NameOfTheDead>other pizza joe?</NameOfTheDead>
-  </member>
-  <member>
-    <username>3</username>
-    <password>3</password>
-    <NameOfTheDead>Jone Doe</NameOfTheDead>
-    <NameOfTheDead>joancarter</NameOfTheDead>
-  </member>
-  <member>
-    <username>4</username>
-    <password>4</password>
-    <NameOfTheDead>Jone Doe</NameOfTheDead>
-    <NameOfTheDead>bobby</NameOfTheDead>
-    <NameOfTheDead>crabby paddy</NameOfTheDead>
-    <NameOfTheDead>blhblh</NameOfTheDead>
-    <NameOfTheDead>shit</NameOfTheDead>
-    <NameOfTheDead>pizza boy</NameOfTheDead>
-    <NameOfTheDead>fuck shit</NameOfTheDead>
-  </member>
-  <member>
-    <username>7</username>
-    <password>7</password>
-    <NameOfTheDead>Jone Doe</NameOfTheDead>
-    <NameOfTheDead>Pizza joe</NameOfTheDead>
-    <NameOfTheDead>mmaaa</NameOfTheDead>
-  </member>
-  <member>
-    <username>a</username>
-    <password>a</password>
-    <NameOfTheDead>plase</NameOfTheDead>
-    <NameOfTheDead>noew</NameOfTheDead>
-    <NameOfTheDead>enw</NameOfTheDead>
-  </member>
-  <member>
-    <username>b</username>
-    <password>b</password>
-    <NameOfTheDead>please</NameOfTheDead>
-    <NameOfTheDead>work</NameOfTheDead>
-    <NameOfTheDead>I want this to work</NameOfTheDead>
-    <NameOfTheDead>I FUCKING DID IT!</NameOfTheDead>
+    <username>larry</username>
+    <password>bGFycnk=</password>
+    <NameOfTheDead>Larry Larryson</NameOfTheDead>
   </member>
 </users>

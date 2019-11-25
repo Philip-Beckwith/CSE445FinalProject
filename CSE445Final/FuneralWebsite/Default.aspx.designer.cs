@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FuneralWebsite
-{
-
-
-    public partial class Default
-    {
-
+namespace FuneralWebsite {
+    
+    
+    public partial class Default {
+        
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace FuneralWebsite
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
         /// <summary>
         /// btnMemberPage control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace FuneralWebsite
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnMemberPage;
-
+        
         /// <summary>
         /// btnStaffPage control.
         /// </summary>
@@ -40,5 +38,23 @@ namespace FuneralWebsite
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnStaffPage;
+        
+        /// <summary>
+        /// memberLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button memberLogin;
+        
+        /// <summary>
+        /// staffLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button staffLogin;
     }
 }

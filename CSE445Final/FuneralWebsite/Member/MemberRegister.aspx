@@ -17,11 +17,12 @@
             Password:<asp:TextBox ID="txbxPassword" runat="server"></asp:TextBox> 
             <br />
             <br />
-            <asp:Button ID="btnSubmit" runat="server" Text="Create Member Account" OnClick="btnSubmit_Click" /> 
             <cap:semesterr runat="server" />
             <br />
             <asp:Label ID="lblResult" runat="server" Text="..."></asp:Label> <br />
+            <asp:Button ID="btnSubmit" runat="server" Text="Create Member Account" OnClick="btnSubmit_Click" /> <br /><br />
             <asp:Button ID="btnMember" runat="server" Text="Go to Member Page" OnClick="btnMember_Click" Visible="false"/>
+            
         </div>
     </form>
 </body>

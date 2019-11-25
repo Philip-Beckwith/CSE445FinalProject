@@ -23,5 +23,15 @@ namespace FuneralWebsite
         {
             Response.Redirect("Staff/Staff.aspx");
         }
+
+        protected void memberLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Member/MemberLogin.aspx");
+        }
+
+        protected void staffLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
+        }
     }
 }

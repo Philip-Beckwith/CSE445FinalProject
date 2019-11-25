@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HashLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,13 +18,16 @@ namespace FuneralWebsite.Member
         }
         protected void btnMemberLogin_Click(object sender, EventArgs e)
         {
+            HashClass hash = new HashClass();
+            string hashedPass = hash.hashPassword(txbxPassword.Text.Trim());
+
             string username = txbxUsername.Text.Trim();
-            string password = txbxPassword.Text.Trim();
+            //string password = txbxPassword.Text.Trim();
 
             string filepath = HttpRuntime.AppDomainAppPath + @"\App_Data\Member.xml";
 
             //TODO, add Hashing Stuff
-            //HashRef.ServiceClient h = new HashRef.ServiceClient(); // hashing
+            //HashRef.ServiceClient h = new HashRef.ServiceClient(); //hashing
             //string pwdEncrypt = h.Hash(password, "CSE445");
 
             XmlDocument myDoc = new XmlDocument();
@@ -33,7 +37,7 @@ namespace FuneralWebsite.Member
             {
                 if (node["username"].InnerText == username)
                 {
-                    if (node["password"].InnerText == password)
+                    if (node["password"].InnerText == hashedPass)
                     {
                         //member logged in succesfully
                         lblLoginError.Visible = false;

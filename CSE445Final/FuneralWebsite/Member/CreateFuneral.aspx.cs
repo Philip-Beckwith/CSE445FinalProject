@@ -102,7 +102,7 @@ namespace FuneralWebsite.Member
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            if (1 == calendarService.ReserveDay(dateLabel.Text, "Account1"))
+            if (1 == calendarService.ReserveDay(dateLabel.Text, (String)Session["UserName"]))
             {
                 reservedDay.Text = dateLabel.Text;
             }
