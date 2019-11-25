@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Xml;
+using MyEncryptionDLL;
+using System.Text;
 
 namespace FuneralWebsite.Member
 {
@@ -33,6 +35,15 @@ namespace FuneralWebsite.Member
                 }
                 lblResult.Visible = false;
 
+                if (Session["CaptchaValid"].Equals(true) )
+                {
+
+                }
+                else
+                {
+                    return;
+                }
+
                 //Code to Add a member
                 XmlElement myMember = xd.CreateElement("member");
                 xd.DocumentElement.AppendChild(myMember);
@@ -43,9 +54,11 @@ namespace FuneralWebsite.Member
 
 
                 //TODO add password hash instead of saving password plaintext to XML file
+                MyEncryptionDLL.Class1 dll = new Class1();
+                string temp = dll.encryptPassword(txbxPassword.Text); 
                 XmlElement myPwd = xd.CreateElement("password");
                 myMember.AppendChild(myPwd);
-                myPwd.InnerText = txbxPassword.Text;
+                myPwd.InnerText =  txbxPassword.Text;
 
                 xd.Save(fLocation);
 
@@ -58,6 +71,16 @@ namespace FuneralWebsite.Member
         protected void btnMember_Click(object sender, EventArgs e)
         {
             Response.Redirect("Member.aspx");
+        }
+
+        protected void Button2_Click(object sender, EventArgs e) // to submit captcha
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e) // to show new captcha string
+        {
+
         }
     }
 }
