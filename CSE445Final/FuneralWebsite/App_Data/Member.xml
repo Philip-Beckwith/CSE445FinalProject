@@ -19,12 +19,16 @@
     <NameOfTheDead>aaaa</NameOfTheDead>
     <NameOfTheDead>test1</NameOfTheDead>
     <NameOfTheDead>Jone Doe</NameOfTheDead>
+    <NameOfTheDead>bobby</NameOfTheDead>
+    <NameOfTheDead>jack</NameOfTheDead>
   </member>
   <member>
     <username>
     </username>
     <password>
     </password>
+    <NameOfTheDead>Jone Doe</NameOfTheDead>
+    <NameOfTheDead>Pizza joe</NameOfTheDead>
   </member>
   <member>
     <username>3</username>

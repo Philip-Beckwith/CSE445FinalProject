@@ -37,7 +37,6 @@ namespace FuneralWebsite.Member
             {
                 savedFuneralJson = save.getEulogy((String)Session["UserName"], (String)Session["NameOfTheDead"]);
             }
-            eulogy.Text = savedFuneralJson;
 
             if (Page.IsPostBack) { }
             else if (!savedFuneralJson.Equals("") && !savedFuneralJson.Contains("ERROR:"))
@@ -106,7 +105,7 @@ namespace FuneralWebsite.Member
 
             String JsonFuneral = new JavaScriptSerializer().Serialize(funeral);
 
-            save.makeOrEditEulogy((String)Session["UserName"], NameOfTheDead.Text, JsonFuneral);
+            eulogy.Text = save.makeOrEditEulogy((String)Session["UserName"], NameOfTheDead.Text, JsonFuneral);
 
             Session["NameOfTheDead"] = NameOfTheDead.Text;
 
