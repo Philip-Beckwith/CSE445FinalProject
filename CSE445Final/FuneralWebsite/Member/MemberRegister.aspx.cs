@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Xml;
-using MyEncryptionDLL;
 using System.Text;
 
 namespace FuneralWebsite.Member
@@ -54,8 +53,8 @@ namespace FuneralWebsite.Member
 
 
                 //TODO add password hash instead of saving password plaintext to XML file
-                MyEncryptionDLL.Class1 dll = new Class1();
-                string temp = dll.encryptPassword(txbxPassword.Text); 
+                //MyEncryptionDLL.Class1 dll = new Class1();
+                //string temp = dll.encryptPassword(txbxPassword.Text); 
                 XmlElement myPwd = xd.CreateElement("password");
                 myMember.AppendChild(myPwd);
                 myPwd.InnerText =  txbxPassword.Text;
