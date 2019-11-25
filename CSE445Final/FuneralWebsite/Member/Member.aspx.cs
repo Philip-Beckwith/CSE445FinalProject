@@ -13,19 +13,26 @@ namespace FuneralWebsite.Member
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //If the cookie is not valid, do not grant access to the page.
-            HttpCookie myCookies = Request.Cookies["LoginCookie"];
-            if(myCookies == null)
+            if (!Page.IsPostBack)
             {
-                Response.Redirect("MemberLogin.aspx");
+                //If the cookie is not valid, do not grant access to the page.
+                HttpCookie myCookies = Request.Cookies["LoginCookie"];
+                if (myCookies == null)
+                {
+                    Response.Redirect("MemberLogin.aspx");
+                }
+                else if (myCookies["valid"] != "true")
+                {
+                    Response.Redirect("MemberLogin.aspx");
+                }
+                if(null != myCookies["username"])
+                {
+                    Session["UserName"] = myCookies["username"];
+                }
+                
+                loadFunerals();
             }
-            else if (myCookies["valid"] != "true")
-            {
-                Response.Redirect("MemberLogin.aspx");
-            }
-
-            Session["UserName"] = myCookies["username"];
-            loadFunerals();
+            else { Session["NameOfTheDead"] = DropDownList1.SelectedValue; }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -36,7 +43,6 @@ namespace FuneralWebsite.Member
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session["NameOfTheDead"] = DropDownList1.SelectedValue;
         }
 
         protected void logoutFunc(object sender, EventArgs e)
@@ -53,7 +59,7 @@ namespace FuneralWebsite.Member
                 XmlDocument xd = new XmlDocument();
                 xd.Load(FS);
                 FS.Close();
-
+                int index = 0;
                 XmlElement rootElement = xd.DocumentElement;
                 foreach (XmlNode node in rootElement.ChildNodes)
                 {
@@ -66,7 +72,8 @@ namespace FuneralWebsite.Member
                             {
                                 ListItem item = new ListItem(funerals.InnerText);
                                 item.Value = funerals.InnerText;
-                                DropDownList1.Items.Insert(0, item);
+                                DropDownList1.Items.Insert(index, item);
+                                index++;
                             }
                         }
                     }
