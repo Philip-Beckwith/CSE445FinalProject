@@ -27,6 +27,17 @@ namespace FuneralWebsite.Member
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //If the cookie is not valid, do not grant access to the page.
+            HttpCookie myCookies = Request.Cookies["LoginCookie"];
+            if (myCookies == null)
+            {
+                Response.Redirect("MemberLogin.aspx");
+            }
+            else if (myCookies["valid"] != "true")
+            {
+                Response.Redirect("MemberLogin.aspx");
+            }
+
             calendarService = new CalendarService.CalendarServicesClient();
 
             SaveFuneral.EulogyServicesClient save = new SaveFuneral.EulogyServicesClient();
