@@ -30,7 +30,7 @@
             <br />
 &nbsp;<br />
             <br />
-            <asp:TextBox ID="eulogy" runat="server" Height="349px" TextMode="MultiLine" Width="586px"></asp:TextBox>
+            <asp:TextBox ID="eulogy" runat="server" Height="349px" TextMode="MultiLine" Width="586px" AutoPostBack="True"></asp:TextBox>
             <br />
             <br />
             <br />

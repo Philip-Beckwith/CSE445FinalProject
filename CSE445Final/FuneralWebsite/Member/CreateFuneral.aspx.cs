@@ -12,7 +12,7 @@ namespace FuneralWebsite.Member
 {
     public class Funeral
     {
-        public string nameOfDeceased = "lkjiojlk";
+        public string nameOfDeceased = "";
         public string date = "Date";
         public string eulogy = "";
         public string price = "$10000"; //default
@@ -22,7 +22,8 @@ namespace FuneralWebsite.Member
     }
     public partial class CreateFuneral : System.Web.UI.Page
     {
-        CalendarService.CalendarServicesClient calendarService;
+        static CalendarService.CalendarServicesClient calendarService = new CalendarService.CalendarServicesClient();
+        static SaveFuneral.EulogyServicesClient save = new SaveFuneral.EulogyServicesClient();
         Funeral funeral;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -38,15 +39,15 @@ namespace FuneralWebsite.Member
                 Response.Redirect("MemberLogin.aspx");
             }
 
-            calendarService = new CalendarService.CalendarServicesClient();
-
-            SaveFuneral.EulogyServicesClient save = new SaveFuneral.EulogyServicesClient();
-
             String savedFuneralJson = "";
 
             if(Session["UserName"] != null && Session["NameOfTheDead"] != null)
             {
                 savedFuneralJson = save.getEulogy((String)Session["UserName"], (String)Session["NameOfTheDead"]);
+                if (savedFuneralJson.StartsWith("\""))
+                {
+                    savedFuneralJson = savedFuneralJson.Substring(1,savedFuneralJson.Length-2);
+                }
             }
 
             if (Page.IsPostBack) { }
@@ -110,13 +111,16 @@ namespace FuneralWebsite.Member
 
         protected void saveChanges_Click(object sender, EventArgs e)
         {
-            SaveFuneral.EulogyServicesClient save = new SaveFuneral.EulogyServicesClient();
-
             updateSession();
 
             String JsonFuneral = new JavaScriptSerializer().Serialize(funeral);
+            JsonFuneral = "\"" + JsonFuneral + "\"";
+            String responce = "";
 
-            save.makeOrEditEulogy((String)Session["UserName"], NameOfTheDead.Text, JsonFuneral);
+            while (!responce.Contains((string)Session["NameOfTheDead"]))
+            {
+                responce = save.makeOrEditEulogy((String)Session["UserName"], (String)Session["NameOfTheDead"], JsonFuneral);
+            }
 
             Session["NameOfTheDead"] = NameOfTheDead.Text;
 
